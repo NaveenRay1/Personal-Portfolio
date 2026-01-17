@@ -32,13 +32,13 @@ export const Projects = () => {
     },
   ];
 
-  // 2. MINI PROJECTS DATA (Added NOIR here)
+
   const miniProjects = [
     {
       title: "NOIR",
       description: "Dark Themed UI Design (HTML/CSS)",
-      imgUrl: noir, // 📸 TIP: Replace this with a screenshot of NOIR later!
-      link: "https://noir-naveenray1.vercel.app" // 👈 Check if this link is correct after deploying
+      imgUrl: noir, // 
+      link: "https://noir-naveenray1.vercel.app" 
     },
   ];
 
@@ -68,7 +68,7 @@ export const Projects = () => {
                   
                   <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
                     
-                    {/* TAB 1: MAIN PROJECTS */}
+
                     <Tab.Pane eventKey="first">
                       <Row>
                         {
@@ -84,7 +84,7 @@ export const Projects = () => {
                       </Row>
                     </Tab.Pane>
 
-                    {/* TAB 2: MINI PROJECTS (Updated!) */}
+
                     <Tab.Pane eventKey="second">
                       <Row>
                         {
@@ -100,7 +100,7 @@ export const Projects = () => {
                       </Row>
                     </Tab.Pane>
 
-                    {/* TAB 3: RESUME (Updated with Download Button!) */}
+
                     <Tab.Pane eventKey="third">
                       <div className="resume-download-container" style={{ textAlign: "center", padding: "20px" }}>
                         <p>
@@ -108,7 +108,7 @@ export const Projects = () => {
                           and latest projects is available for download.
                         </p>
                         
-                        {/* ⚠️ Make sure 'resume.pdf' is inside your 'public' folder! */}
+
                         <a href="/resume.pdf" download="Naveen_Ray_Resume.pdf">
                           <button style={{
                             background: "linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%)",
