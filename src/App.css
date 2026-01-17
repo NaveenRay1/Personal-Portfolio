@@ -1,21 +1,21 @@
-/************ Custom Font ************/
+
 @font-face {
-	font-family: Centra;
-	src: url('./assets/font/CentraNo2-Bold.ttf');
-	font-weight: 700;
+  font-family: Centra;
+  src: url('./assets/font/CentraNo2-Bold.ttf');
+  font-weight: 700;
 }
 @font-face {
-	font-family: Centra;
-	src: url('./assets/font/CentraNo2-Medium.ttf');
-	font-weight: 500;
+  font-family: Centra;
+  src: url('./assets/font/CentraNo2-Medium.ttf');
+  font-weight: 500;
 }
 @font-face {
-	font-family: Centra;
-	src: url('./assets/font/CentraNo2-Book.ttf');
-	font-weight: 400;
+  font-family: Centra;
+  src: url('./assets/font/CentraNo2-Book.ttf');
+  font-weight: 400;
 }
 
-/************ Default Css ************/
+
 * {
   margin: 0;
   padding: 0;
@@ -67,20 +67,6 @@ input:focus, textarea:focus, select:focus {
   outline: none;
 }
 
-@media (min-width:1700px) {
-	main .container {
-		max-width: 100%;
-		padding: 0 150px;
-	}
-}
-
-p.success {
-	color: green;
-}
-
-p.danger {
-	color: red;
-}
 /************ Navbar Css ************/
 nav.navbar {
   padding: 18px 0;
@@ -137,18 +123,18 @@ span.navbar-text {
     background-color: #ffffff;
     border-radius: 50%;
     transform: scale(0);
-	transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 .social-icon a:hover::before {
     transform: scale(1);
 }
 .social-icon a img {
-	width: 40%;
-	z-index: 1;
-	transition: 0.3s ease-in-out;
+  width: 40%;
+  z-index: 1;
+  transition: 0.3s ease-in-out;
 }
 .social-icon a:hover img {
-	filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%);
+  filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%);
 }
 .navbar-text button {
   font-weight: 700;
@@ -157,9 +143,9 @@ span.navbar-text {
   padding: 18px 34px;
   font-size: 18px;
   margin-left: 18px;
-	position: relative;
-	background-color: transparent;
-	transition: 0.3s ease-in-out;
+  position: relative;
+  background-color: transparent;
+  transition: 0.3s ease-in-out;
 }
 .navbar-text button span {
   z-index: 1;
@@ -179,14 +165,14 @@ span.navbar-text {
   color: #121212;
 }
 .navbar-text button:hover::before {
-	content: "";
-	width: 100%;
-	height: 100%;
-	position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 nav.navbar .navbar-toggler:active,
 nav.navbar .navbar-toggler:focus {
-	outline: none;
+  outline: none;
     box-shadow: none;
 }
 nav.navbar .navbar-toggler-icon {
@@ -199,35 +185,35 @@ nav.navbar .navbar-toggler-icon {
   top: -2px;
 }
 nav.navbar .navbar-toggler-icon:focus {
-	border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #fff;
 }
 nav.navbar .navbar-toggler-icon:after,
 nav.navbar .navbar-toggler-icon:before {
-	width: 24px;
-	position: absolute;
-	height: 2px;
-	background-color: #fff;
-	top: 0;
-	left: 0;
-	content: '';
-	z-index: 2;
-	transition: all 300ms linear;
+  width: 24px;
+  position: absolute;
+  height: 2px;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  content: '';
+  z-index: 2;
+  transition: all 300ms linear;
 }
 nav.navbar .navbar-toggler-icon:after {
-	top: 8px;
+  top: 8px;
 }
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
-	transform: rotate(45deg);
-	background-color: #fff;
-	height: 2px;
+  transform: rotate(45deg);
+  background-color: #fff;
+  height: 2px;
 }
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
-	transform: translateY(8px) rotate(-45deg);
-	background-color: #fff;
-	height: 2px;
+  transform: translateY(8px) rotate(-45deg);
+  background-color: #fff;
+  height: 2px;
 }
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-	border-color: transparent;
+  border-color: transparent;
 }
 
 /************ Banner Css ************/
@@ -313,8 +299,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   margin-top: -60px;
 }
 .skill h2 {
-	font-size: 45px;
-	font-weight: 700;
+  font-size: 45px;
+  font-weight: 700;
 }
 .skill p {
     color: #B8B8B8;
@@ -347,8 +333,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   background-color: black;
 }
 .project h2 {
-	font-size: 45px;
-	font-weight: 700;
+  font-size: 45px;
+  font-weight: 700;
   text-align: center;
 }
 .project p {
@@ -466,7 +452,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   z-index: -4;
 }
 
-/************ Projects Css ************/
+/************ Contact Css ************/
 .contact {
   background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
   padding: 60px 0 200px 0;
@@ -475,8 +461,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 92%;
 }
 .contact h2 {
-	font-size: 45px;
-	font-weight: 700;
+  font-size: 45px;
+  font-weight: 700;
   margin-bottom: 30px;
 }
 .contact form input, .contact form textarea {
@@ -616,10 +602,90 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   letter-spacing: 0.5px;
   margin-top: 20px;
 }
-
 .proj-imgbx img {
   width: 100%;
-  height: 380px; /* 👈 This forces all cards to be the same height */
-  object-fit: cover; /* 👈 This zooms the image to fill that height without stretching */
-  object-position: top; /* 👈 This ensures the top of your website (navbar) is always visible */
+  height: 380px; 
+  object-fit: cover; 
+  object-position: top;
+}
+
+
+
+@media (max-width: 767px) {
+  
+  
+  .animate__animated {
+    opacity: 1 !important;
+    animation: none !important; /* Stop buggy animations */
+  }
+
+
+  #pills-tab {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; 
+    width: 100% !important;
+    margin-bottom: 30px !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 0;
+  }
+  #pills-tab .nav-item {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  #pills-tab .nav-link {
+    font-size: 11px !important;
+    padding: 12px 0 !important;
+    border-radius: 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  #pills-tab .nav-link.active {
+     background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%) !important;
+  }
+
+
+  .banner {
+    padding: 120px 0 50px 0;
+  }
+  .banner .row { 
+    display: flex;
+    flex-direction: column-reverse; 
+  }
+  .banner img {
+    width: 65% !important;
+    max-width: 250px;
+    margin: 0 auto 30px auto;
+    display: block !important;
+    /* Force visibility */
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .banner h1 {
+    font-size: 28px !important;
+    text-align: center;
+  }
+  .banner p {
+    text-align: center;
+    font-size: 14px !important;
+  }
+  .banner button {
+    margin: 25px auto;
+  }
+
+
+  nav.navbar {
+    background-color: #121212 !important;
+  }
+  .contact {
+    padding: 40px 0;
+  }
+  .contact img {
+    display: none !important; 
+  }
+
+  .proj-imgbx img {
+    height: 200px !important; 
+  }
 }

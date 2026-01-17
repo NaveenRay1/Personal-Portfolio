@@ -1,8 +1,8 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
 import foreverImg from "../assets/img/forever-project.png";
-import projImg2 from "../assets/img/project-img2.png";
-import projImg3 from "../assets/img/project-img3.png";
+import projImg2 from "../assets/img/portfolio.png";
+import projImg3 from "../assets/img/netflixClone.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
@@ -12,21 +12,26 @@ export const Projects = () => {
   const projects = [
    {
       title: "FOREVER",
-      description: "Full Stack E-commerce Platform (Live)",
-      imgUrl: foreverImg, // 👈 Use the new image variable
-      link: "https://forever-seven-phi.vercel.app" // 👈 Add your Vercel link here
+      description: "Frontend E-commerce Platform (Live)",
+      imgUrl: foreverImg, 
+      link: "https://forever-seven-phi.vercel.app" 
+    },
+    {
+      title: "Netflix Clone", 
+      description: "React, TMDB API ",
+      imgUrl: projImg3, 
+      link: "https://netflix-clone-tau-rosy.vercel.app"
     },
     
-    {
-      title: "Upcoming Project",
-      description: "Currently in Development",
-      imgUrl: projImg2,
+     {
+      title: "Personal Portfolio",
+      description: "React.js & Animations (This Site!)",
+       imgUrl: projImg2,
+      link: "https://naveen-ray-portfolio.vercel.app" 
     },
-    {
-      title: "Upcoming Project",
-      description: "Future Innovation",
-      imgUrl: projImg3,
-    },
+     
+   
+  
   ];
 
   return (

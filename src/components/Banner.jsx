@@ -50,16 +50,15 @@ export const Banner = () => {
 
   return (
     <section className="banner" id="home">
-      <Container>
-        <Row className="aligh-items-center">
+<Container>
+        {/* TYPO FIXED: changed 'aligh' to 'align' */}
+        <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <span className="tagline">Welcome to my Portfolio</span>
-                {/* UPDATED: Your Name & Technical Titles */}
                 <h1>{`Hi! I'm Naveen Ray`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Frontend Developer", "React Developer", "Software Engineer" ]'><span className="wrap">{text}</span></span></h1>
-                  {/* UPDATED: Strong, self-taught developer bio */}
                   <p>I am a passionate Frontend Developer dedicated to building interactive and responsive web applications. I specialize in crafting clean, user-friendly interfaces using React.js and modern JavaScript. I love solving problems through code and am constantly exploring new technologies to turn creative ideas into functional reality.</p>
                   <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
               </div>}
