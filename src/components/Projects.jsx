@@ -3,12 +3,14 @@ import { ProjectCard } from "./ProjectCard";
 import foreverImg from "../assets/img/forever-project.png";
 import projImg2 from "../assets/img/portfolio.png";
 import projImg3 from "../assets/img/netflixClone.png";
+import noir from "../assets/img/noir.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
 export const Projects = () => {
 
+  // 1. MAIN PROJECTS DATA
   const projects = [
    {
       title: "FOREVER",
@@ -18,20 +20,26 @@ export const Projects = () => {
     },
     {
       title: "Netflix Clone", 
-      description: "React, TMDB API ",
+      description: "React, TMDB API",
       imgUrl: projImg3, 
       link: "https://netflix-clone-tau-rosy.vercel.app"
     },
-    
-     {
+    {
       title: "Personal Portfolio",
       description: "React.js & Animations (This Site!)",
        imgUrl: projImg2,
       link: "https://naveen-ray-portfolio.vercel.app" 
     },
-     
-   
-  
+  ];
+
+  // 2. MINI PROJECTS DATA (Added NOIR here)
+  const miniProjects = [
+    {
+      title: "NOIR",
+      description: "Dark Themed UI Design (HTML/CSS)",
+      imgUrl: noir, // 📸 TIP: Replace this with a screenshot of NOIR later!
+      link: "https://noir-naveenray1.vercel.app" // 👈 Check if this link is correct after deploying
+    },
   ];
 
   return (
@@ -44,6 +52,7 @@ export const Projects = () => {
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
                 <h2>Projects</h2>
                 <p>My flagship project is <b>FOREVER</b>, a comprehensive e-commerce platform. I focus on building scalable, user-friendly applications with modern technologies like React and the MERN stack.</p>
+                
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
@@ -56,7 +65,10 @@ export const Projects = () => {
                       <Nav.Link eventKey="third">Resume</Nav.Link>
                     </Nav.Item>
                   </Nav>
+                  
                   <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
+                    
+                    {/* TAB 1: MAIN PROJECTS */}
                     <Tab.Pane eventKey="first">
                       <Row>
                         {
@@ -71,12 +83,50 @@ export const Projects = () => {
                         }
                       </Row>
                     </Tab.Pane>
+
+                    {/* TAB 2: MINI PROJECTS (Updated!) */}
                     <Tab.Pane eventKey="second">
-                      <p>I also build smaller clones and tools to practice specific libraries. Check out my GitHub for my UI experiments and smaller tools.</p>
+                      <Row>
+                        {
+                          miniProjects.map((project, index) => {
+                            return (
+                              <ProjectCard
+                                key={index}
+                                {...project}
+                                />
+                            )
+                          })
+                        }
+                      </Row>
                     </Tab.Pane>
+
+                    {/* TAB 3: RESUME (Updated with Download Button!) */}
                     <Tab.Pane eventKey="third">
-                      <p>My Resume detailing my B.Tech (2026) coursework and technical skills will be available for download here.</p>
+                      <div className="resume-download-container" style={{ textAlign: "center", padding: "20px" }}>
+                        <p>
+                          My Resume detailing my B.Tech (2026) coursework, technical skills (React.js, MERN, DSA), 
+                          and latest projects is available for download.
+                        </p>
+                        
+                        {/* ⚠️ Make sure 'resume.pdf' is inside your 'public' folder! */}
+                        <a href="/resume.pdf" download="Naveen_Ray_Resume.pdf">
+                          <button style={{
+                            background: "linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%)",
+                            border: "1px solid rgba(255, 255, 255, 0.5)",
+                            padding: "14px 34px",
+                            color: "#fff",
+                            fontSize: "18px",
+                            fontWeight: "700",
+                            marginTop: "20px",
+                            cursor: "pointer",
+                            borderRadius: "10px"
+                          }}>
+                            Download Resume
+                          </button>
+                        </a>
+                      </div>
                     </Tab.Pane>
+
                   </Tab.Content>
                 </Tab.Container>
               </div>}
