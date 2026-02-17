@@ -1,46 +1,75 @@
 import { useState, useEffect } from "react";
-import { Col, Row, Alert } from "react-bootstrap";
 
 export const Newsletter = ({ onValidated, status, message }) => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
-    if (status === 'success') clearFields();
-  }, [status])
+    if (status === "success") {
+      setEmail("");
+    }
+  }, [status]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    email &&
-    email.indexOf("@") > -1 &&
-    onValidated({
-      EMAIL: email
-    })
-  }
 
-  const clearFields = () => {
-    setEmail('');
-  }
+    if (email && email.includes("@")) {
+      onValidated({
+        EMAIL: email,
+      });
+    }
+  };
 
   return (
-      <Col lg={12}>
-        <div className="newsletter-bx wow slideInUp">
-          <Row>
-            <Col lg={12} md={6} xl={5}>
-              <h3>Subscribe to our Newsletter<br></br> & Never miss latest updates</h3>
-              {status === 'sending' && <Alert>Sending...</Alert>}
-              {status === 'error' && <Alert variant="danger">{message}</Alert>}
-              {status === 'success' && <Alert variant="success">{message}</Alert>}
-            </Col>
-            <Col md={6} xl={7}>
-              <form onSubmit={handleSubmit}>
-                <div className="new-email-bx">
-                  <input value={email} type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email Address" />
-                  <button type="submit">Submit</button>
-                </div>
-              </form>
-            </Col>
-          </Row>
-        </div>
-      </Col>
-  )
-}
+    <div className="bg-[#1a1a1a] rounded-2xl p-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+
+      {/* Left Content */}
+      <div className="space-y-4 text-center lg:text-left">
+        <h3 className="text-2xl md:text-3xl font-semibold">
+          Subscribe to our Newsletter <br />
+          <span className="text-purple-400">
+            & Never miss latest updates
+          </span>
+        </h3>
+
+        {/* Status Messages */}
+        {status === "sending" && (
+          <p className="text-yellow-400 font-medium">Sending...</p>
+        )}
+
+        {status === "error" && (
+          <p className="text-red-400 font-medium">{message}</p>
+        )}
+
+        {status === "success" && (
+          <p className="text-green-400 font-medium">{message}</p>
+        )}
+      </div>
+
+      {/* Form */}
+      <form
+        onSubmit={handleSubmit}
+        className="w-full lg:w-auto flex flex-col sm:flex-row gap-4"
+      >
+        <input
+          type="email"
+          placeholder="Email Address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="w-full sm:w-72 bg-black/40 border border-white/10
+                     px-5 py-3 rounded-lg
+                     focus:outline-none focus:ring-2 focus:ring-purple-600"
+        />
+
+        <button
+          type="submit"
+          className="px-6 py-3 rounded-lg
+                     bg-gradient-to-r from-purple-600 to-indigo-600
+                     hover:opacity-90 transition font-semibold"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+};

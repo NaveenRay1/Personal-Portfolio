@@ -1,79 +1,82 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import headerImg from "../assets/img/header-img.svg";
-import { ArrowRightCircle } from 'react-bootstrap-icons';
-import 'animate.css';
-import TrackVisibility from 'react-on-screen';
+import { ArrowRight } from "lucide-react";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [text, setText] = useState('');
-  const [delta, setDelta] = useState(300 - Math.random() * 100);
-  const [index, setIndex] = useState(1);
-  // UPDATED: Strictly technical roles
-  const toRotate = [ "Frontend Developer", "React Developer", "Software Engineer" ];
+  const [text, setText] = useState("");
+  const [delta, setDelta] = useState(200);
+  const toRotate = ["Frontend Developer", "React Developer", "Software Engineer"];
   const period = 2000;
 
   useEffect(() => {
-    let ticker = setInterval(() => {
+    const ticker = setTimeout(() => {
       tick();
     }, delta);
 
-    return () => { clearInterval(ticker) };
-  }, [text])
+    return () => clearTimeout(ticker);
+  }, [text]);
 
   const tick = () => {
-    let i = loopNum % toRotate.length;
-    let fullText = toRotate[i];
-    let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
+    const i = loopNum % toRotate.length;
+    const fullText = toRotate[i];
+
+    const updatedText = isDeleting
+      ? fullText.substring(0, text.length - 1)
+      : fullText.substring(0, text.length + 1);
 
     setText(updatedText);
 
-    if (isDeleting) {
-      setDelta(prevDelta => prevDelta / 2);
-    }
-
     if (!isDeleting && updatedText === fullText) {
-      setIsDeleting(true);
-      setIndex(prevIndex => prevIndex - 1);
-      setDelta(period);
-    } else if (isDeleting && updatedText === '') {
+      setTimeout(() => setIsDeleting(true), period);
+    } else if (isDeleting && updatedText === "") {
       setIsDeleting(false);
       setLoopNum(loopNum + 1);
-      setIndex(1);
-      setDelta(500);
-    } else {
-      setIndex(prevIndex => prevIndex + 1);
     }
-  }
+
+    setDelta(isDeleting ? 100 : 200);
+  };
 
   return (
-    <section className="banner" id="home">
-<Container>
-        {/* TYPO FIXED: changed 'aligh' to 'align' */}
-        <Row className="align-items-center">
-          <Col xs={12} md={6} xl={7}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <span className="tagline">Welcome to my Portfolio</span>
-                <h1>{`Hi! I'm Naveen Ray`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Frontend Developer", "React Developer", "Software Engineer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>I am a passionate Frontend Developer dedicated to building interactive and responsive web applications. I specialize in crafting clean, user-friendly interfaces using React.js and modern JavaScript. I love solving problems through code and am constantly exploring new technologies to turn creative ideas into functional reality.</p>
-                  <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
-              </div>}
-            </TrackVisibility>
-          </Col>
-          <Col xs={12} md={6} xl={5}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  <img src={headerImg} alt="Header Img"/>
-                </div>}
-            </TrackVisibility>
-          </Col>
-        </Row>
-      </Container>
+    <section id="home" className="min-h-screen flex items-center bg-black text-white">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+
+        {/* LEFT SIDE */}
+        <div className="w-full md:w-1/2 space-y-6">
+
+          <span className="inline-block px-4 py-2 text-sm font-semibold tracking-wide uppercase bg-purple-600/20 text-purple-400 rounded-full">
+            Welcome to my Portfolio
+          </span>
+
+          <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold leading-tight">
+            Hi! I'm Naveen Ray <br />
+            <span className="text-purple-400">{text}</span>
+          </h1>
+
+          <p className="text-gray-400 text-lg leading-relaxed">
+            I am a passionate Frontend Developer dedicated to building interactive
+            and responsive web applications. I specialize in crafting clean,
+            user-friendly interfaces using React.js and modern JavaScript.
+          </p>
+
+          <button className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 transition px-6 py-3 rounded-lg font-medium">
+            Let’s Connect
+            <ArrowRight size={20} />
+          </button>
+
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div className="w-full md:w-1/2 flex justify-center">
+          <img
+            src={headerImg}
+            alt="Header"
+            className="w-80 md:w-96 animate-pulse"
+          />
+        </div>
+
+      </div>
     </section>
-  )
-}
+  );
+};

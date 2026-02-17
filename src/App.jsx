@@ -1,5 +1,5 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 import { NavBar } from "./components/NavBar";
 import { Banner } from './components/Banner';
 import { Skills } from './components/Skills';
@@ -10,13 +10,13 @@ import { Footer } from './components/Footer';
 
 function App() {
   return (
-    <div className="App">
+    <div className="min-h-screen bg-[#121212] text-white overflow-x-hidden">
       <NavBar />
-      <Banner/>
-      <Skills/>
-      <Projects/>
-      <Contact/>
-      <Footer/>
+      <Banner />
+      <Skills />
+      <Projects />
+      <Contact />
+      <Footer />
     </div>
   );
 }

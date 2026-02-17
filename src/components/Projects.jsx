@@ -1,140 +1,157 @@
-import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
-import { ProjectCard } from "./ProjectCard";
+import { useState } from "react";
 import foreverImg from "../assets/img/forever-project.png";
 import projImg2 from "../assets/img/portfolio.png";
 import projImg3 from "../assets/img/netflixClone.png";
 import noir from "../assets/img/noir.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
-import 'animate.css';
-import TrackVisibility from 'react-on-screen';
 
 export const Projects = () => {
+  const [activeTab, setActiveTab] = useState("main");
 
-  // 1. MAIN PROJECTS DATA
   const projects = [
-   {
+    {
       title: "FOREVER",
       description: "Frontend E-commerce Platform (Live)",
-      imgUrl: foreverImg, 
-      link: "https://forever-seven-phi.vercel.app" 
+      imgUrl: foreverImg,
+      link: "https://forever-seven-phi.vercel.app",
     },
     {
-      title: "Netflix Clone", 
+      title: "Netflix Clone",
       description: "React, TMDB API",
-      imgUrl: projImg3, 
-      link: "https://netflix-clone-tau-rosy.vercel.app"
+      imgUrl: projImg3,
+      link: "https://netflix-clone-tau-rosy.vercel.app",
     },
     {
       title: "Personal Portfolio",
       description: "React.js & Animations (This Site!)",
-       imgUrl: projImg2,
-      link: "https://naveen-ray-portfolio.vercel.app" 
+      imgUrl: projImg2,
+      link: "https://naveen-ray-portfolio.vercel.app",
     },
   ];
-
 
   const miniProjects = [
     {
       title: "NOIR",
       description: "Dark Themed UI Design (HTML/CSS)",
-      imgUrl: noir, // 
-      link: "https://noir-naveenray1.vercel.app" 
+      imgUrl: noir,
+      link: "https://noir-naveenray1.vercel.app",
     },
   ];
 
+  const renderProjects = (data) => (
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mt-10">
+      {data.map((project, index) => (
+        <a
+          key={index}
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group bg-[#1a1a1a] rounded-2xl overflow-hidden
+                     hover:-translate-y-2 transition duration-300"
+        >
+          <img
+            src={project.imgUrl}
+            alt={project.title}
+            className="w-full h-60 object-cover"
+          />
+
+          <div className="p-6 space-y-3">
+            <h3 className="text-xl font-semibold group-hover:text-purple-400 transition">
+              {project.title}
+            </h3>
+            <p className="text-gray-400">{project.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  );
+
   return (
-    <section className="project" id="projects">
-      <Container>
-        <Row>
-          <Col size={12}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
-                <h2>Projects</h2>
-                <p>My flagship project is <b>FOREVER</b>, a comprehensive e-commerce platform. I focus on building scalable, user-friendly applications with modern technologies like React and the MERN stack.</p>
-                
-                <Tab.Container id="projects-tabs" defaultActiveKey="first">
-                  <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
-                    <Nav.Item>
-                      <Nav.Link eventKey="first">Main Project</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                      <Nav.Link eventKey="second">Mini Projects</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                      <Nav.Link eventKey="third">Resume</Nav.Link>
-                    </Nav.Item>
-                  </Nav>
-                  
-                  <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
-                    
+    <section
+      id="projects"
+      className="relative py-24 bg-black text-white overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-6">
 
-                    <Tab.Pane eventKey="first">
-                      <Row>
-                        {
-                          projects.map((project, index) => {
-                            return (
-                              <ProjectCard
-                                key={index}
-                                {...project}
-                                />
-                            )
-                          })
-                        }
-                      </Row>
-                    </Tab.Pane>
+        {/* Heading */}
+        <div className="text-center max-w-3xl mx-auto space-y-4">
+          <h2 className="text-4xl md:text-5xl font-bold">Projects</h2>
+          <p className="text-gray-400 text-lg">
+            My flagship project is <b>FOREVER</b>, a comprehensive
+            e-commerce platform. I focus on building scalable,
+            user-friendly applications using modern technologies.
+          </p>
+        </div>
 
+        {/* Tabs */}
+        <div className="flex justify-center gap-6 mt-12">
+          <button
+            onClick={() => setActiveTab("main")}
+            className={`px-6 py-2 rounded-full font-medium transition ${
+              activeTab === "main"
+                ? "bg-purple-600 text-white"
+                : "bg-[#1a1a1a] text-gray-400 hover:text-white"
+            }`}
+          >
+            Main Projects
+          </button>
 
-                    <Tab.Pane eventKey="second">
-                      <Row>
-                        {
-                          miniProjects.map((project, index) => {
-                            return (
-                              <ProjectCard
-                                key={index}
-                                {...project}
-                                />
-                            )
-                          })
-                        }
-                      </Row>
-                    </Tab.Pane>
+          <button
+            onClick={() => setActiveTab("mini")}
+            className={`px-6 py-2 rounded-full font-medium transition ${
+              activeTab === "mini"
+                ? "bg-purple-600 text-white"
+                : "bg-[#1a1a1a] text-gray-400 hover:text-white"
+            }`}
+          >
+            Mini Projects
+          </button>
 
+          <button
+            onClick={() => setActiveTab("resume")}
+            className={`px-6 py-2 rounded-full font-medium transition ${
+              activeTab === "resume"
+                ? "bg-purple-600 text-white"
+                : "bg-[#1a1a1a] text-gray-400 hover:text-white"
+            }`}
+          >
+            Resume
+          </button>
+        </div>
 
-                    <Tab.Pane eventKey="third">
-                      <div className="resume-download-container" style={{ textAlign: "center", padding: "20px" }}>
-                        <p>
-                          My Resume detailing my B.Tech (2026) coursework, technical skills (React.js, MERN, DSA), 
-                          and latest projects is available for download.
-                        </p>
-                        
+        {/* Tab Content */}
+        <div className="mt-10">
+          {activeTab === "main" && renderProjects(projects)}
+          {activeTab === "mini" && renderProjects(miniProjects)}
 
-                        <a href="/resume.pdf" download="Naveen_Ray_Resume.pdf">
-                          <button style={{
-                            background: "linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%)",
-                            border: "1px solid rgba(255, 255, 255, 0.5)",
-                            padding: "14px 34px",
-                            color: "#fff",
-                            fontSize: "18px",
-                            fontWeight: "700",
-                            marginTop: "20px",
-                            cursor: "pointer",
-                            borderRadius: "10px"
-                          }}>
-                            Download Resume
-                          </button>
-                        </a>
-                      </div>
-                    </Tab.Pane>
+          {activeTab === "resume" && (
+            <div className="text-center max-w-2xl mx-auto space-y-6">
+              <p className="text-gray-400 text-lg">
+                My Resume detailing my B.Tech (2026) coursework,
+                technical skills (React.js, MERN, DSA),
+                and latest projects is available for download.
+              </p>
 
-                  </Tab.Content>
-                </Tab.Container>
-              </div>}
-            </TrackVisibility>
-          </Col>
-        </Row>
-      </Container>
-      <img className="background-image-right" src={colorSharp2} alt="bg-shape"></img>
+              <a
+                href="/resume.pdf"
+                download="Naveen_Ray_Resume.pdf"
+                className="inline-block px-8 py-4 rounded-xl
+                           bg-gradient-to-r from-purple-600 to-indigo-600
+                           hover:opacity-90 transition font-semibold"
+              >
+                Download Resume
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Decorative Background */}
+      <img
+        src={colorSharp2}
+        alt="Decoration"
+        className="absolute right-0 bottom-0 opacity-10 pointer-events-none"
+      />
     </section>
-  )
-}
+  );
+};
